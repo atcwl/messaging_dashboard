@@ -1,0 +1,35 @@
+# Flutter/Dart/Pub related
+.dart_tool/
+.packages
+.pub/
+build/
+flutter_export_environment.sh
+pubspec.lock
+
+# Android related
+android/.gradle/
+android/local.properties
+android/key.jks
+android/key.properties
+
+# iOS related
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+
+# VSCode and IntelliJ
+.vscode/
+.idea/
+
+# User settings
+*.log
+*.lock
+*.tmp
+
+# Generated keystore files
+*.jks
+*.keystore
+
+# MacOS generated files
+.DS_Store
