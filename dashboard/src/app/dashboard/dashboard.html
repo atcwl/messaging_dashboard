@@ -1,9 +1,33 @@
-<div class="p-6">
-  <h1 class="text-4xl font-bold text-blue-600">
-    Tailwind Dashboard 🎉
-  </h1>
+<div class="flex h-screen">
 
-  <p class="mt-4 text-gray-700">
-    Dashboard is rendering correctly and Tailwind is active.
-  </p>
+  <!-- Sidebar -->
+  <aside class="w-64 bg-gray-900 text-white p-4 space-y-4">
+    <h2 class="text-xl font-bold mb-6">Tools Dashboard</h2>
+
+    <nav class="space-y-2">
+      <a routerLink="/tickets"
+         routerLinkActive="bg-gray-700"
+         class="block px-3 py-2 rounded hover:bg-gray-700">
+        🎫 Tickets
+      </a>
+
+      <a routerLink="/editor"
+         routerLinkActive="bg-gray-700"
+         class="block px-3 py-2 rounded hover:bg-gray-700">
+        ✏️ Knowledgebase Editor
+      </a>
+
+      <a routerLink="/logs"
+         routerLinkActive="bg-gray-700"
+         class="block px-3 py-2 rounded hover:bg-gray-700">
+        📝 Logs
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 bg-gray-100 p-6 overflow-auto">
+    <router-outlet></router-outlet>
+  </main>
+
 </div>
