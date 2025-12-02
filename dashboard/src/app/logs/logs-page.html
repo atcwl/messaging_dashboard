@@ -1,4 +1,10 @@
 <h1 class="text-2xl font-bold mb-4">Live Logs</h1>
-<div class="bg-black text-green-400 p-4 rounded h-80 overflow-auto">
-  <p>System initialized...</p>
+
+<div
+  id="log-box"
+  class="bg-black text-green-400 p-3 h-96 overflow-y-auto rounded shadow"
+>
+  <div *ngFor="let line of logs()">
+    {{ line }}
+  </div>
 </div>
