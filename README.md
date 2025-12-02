@@ -1,171 +1,161 @@
-# 🌟 Takehome App — Flutter + Angular Hybrid System
+# 📦 Takehome Assessment — Flutter + Angular
 
-A hybrid assessment project built with **Flutter** for the mobile experience and **Angular** for the embedded dashboard. The Angular dashboard runs inside the Flutter app using a WebView.
+This project contains both required applications for the take-home assessment:
 
-<p align="left">
-  <img src="https://img.shields.io/badge/Flutter-3.0-blue?logo=flutter" />
-  <img src="https://img.shields.io/badge/Angular-17-red?logo=angular" />
-  <img src="https://img.shields.io/badge/Dart-3.0-blue?logo=dart" />
-  <img src="https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript" />
-  <img src="https://img.shields.io/badge/Platform-Android-green" />
-</p>
+- **Flutter Mobile App** (loads the Angular dashboard through WebView)
+- **Angular Dashboard** (Tickets, Knowledgebase Editor, Logs)
 
----
-
-## 📦 Project Overview
-
-This repo includes two connected systems:
-
-### **1. Flutter App (Main Application)**
-
-* Chat list
-* Chat detail view
-* Bottom navigation
-* Dashboard tab that loads Angular in a WebView
-
-### **2. Angular Dashboard (Web Mini-App)**
-
-* Tailwind UI
-* Simple tools dashboard
-* Served locally and rendered inside Flutter
-
-Flutter → WebView → Angular Dashboard
+Both follow the folder structure outlined in the PDF.
 
 ---
 
 ## 📁 Folder Structure
 
 ```
-takehome_app/              ← Flutter project (main)
-dashboard/                 ← Angular dashboard project
+assessment/
+├── flutter_app/
+│   └── takehome_app/        # Complete Flutter application
+│
+└── dashboard/               # Angular dashboard application
 ```
 
 ---
 
-# 🚀 Getting Started
+## 🚀 Flutter App
 
-## 1️⃣ Install Flutter Dependencies
+The Flutter app includes:
 
-From the Flutter project root:
+- A bottom navigation bar  
+- A Messages screen  
+- A Dashboard tab that loads the Angular dashboard through WebView  
+- Cleartext + `<usesCleartextTraffic>` enabled  
+- Angular loaded using the correct Android emulator IP  
 
-```
+### Run the Flutter App
+
+```sh
+cd flutter_app/takehome_app
 flutter pub get
+flutter run
 ```
 
----
+### Important — Dashboard Connection
 
-## 2️⃣ Install Angular Dependencies
-
-Go to the Angular folder:
-
-```
-cd dashboard
-npm install
-```
-
----
-
-# 🧩 Running the Angular Dashboard
-
-The Android emulator **cannot access `localhost`** directly.
-
-### Angular must be started with:
-
-* Host: `0.0.0.0`
-* Disable host check
-* Port: `4200` (or another if needed)
-
-Run:
-
-```
-ng serve --host 0.0.0.0 --disable-host-check --port 4200
-```
-
-You should see:
-
-```
-Local:   http://localhost:4200/
-Network: http://192.168.x.x:4200/
-```
-
-Flutter will connect using:
+Angular must be running on:
 
 ```
 http://10.0.2.2:4200
 ```
 
-This is how the Android emulator maps to your computer.
+This is the correct host for Android emulators to reach your local machine.
 
 ---
 
-# 📱 Running the Flutter App
+## 🖥️ Angular Dashboard
 
-From the Flutter root directory:
+The dashboard includes:
+
+- **Tickets Page** — list with simple filtering  
+- **Knowledgebase Editor** — markdown textarea with live preview  
+- **Logs Page** — live timestamped log feed  
+
+Tech used:
+
+- Angular 17 (standalone components)
+- TailwindCSS
+- Local log generator (no backend required)
+- Responsive dashboard layout
+
+### Run the Dashboard
+
+```sh
+cd dashboard
+npm install
+ng serve
+```
+
+Available at:
 
 ```
-flutter run
+http://localhost:4200
+http://0.0.0.0:4200
 ```
 
-Open the **Dashboard** tab — it will load the Angular dashboard through the WebView.
+Flutter loads the dashboard using:
+
+```
+http://10.0.2.2:4200
+```
+
+## 📸 Screenshots
+
+Below are screenshots showing the Flutter mobile UI and the embedded Angular dashboard tools.
 
 ---
 
-# 🌐 WebView Configuration (Flutter)
-
-Flutter loads Angular via:
-
-```dart
-Uri.parse("http://10.0.2.2:4200")
-```
-
-This works only when Angular is running with `--host 0.0.0.0`.
+### **Flutter – Messages & Contacts**
+| Messages Tab | Contact Details |
+|--------------|----------------|
+| ![](./screenshots/messagetab.png) | ![](./screenshots/contacts.png) |
 
 ---
 
-# 🛠 Troubleshooting
-
-### ❌ WebView shows ERR_CONNECTION_REFUSED
-
-Angular is not exposed externally.
-
-Run:
-
-```
-ng serve --host 0.0.0.0 --disable-host-check
-```
+### **Dashboard – Tickets**
+| All Tickets | Open Tickets | Pending Tickets | Closed Tickets |
+|-------------|--------------|------------------|----------------|
+| ![](./screenshots/tickets.png) | ![](./screenshots/openTickets.png) | ![](./screenshots/pendingTickets.png) | ![](./screenshots/closedTickets.png) |
 
 ---
 
-### ❌ ERR_CLEARTEXT_NOT_PERMITTED
-
-Enable clear text in `AndroidManifest.xml`:
-
-```xml
-android:usesCleartextTraffic="true"
-```
+### **Dashboard – Knowledgebase Editor**
+![](./screenshots/knowledgebase.png)
 
 ---
 
-### ❌ Timeout or blank screen
+### **Dashboard – Live Logs**
+![](./screenshots/logs.png)
 
-Firewall may block Angular dev server.
+## 🧪 Testing
 
-Try using another port:
-
+### Flutter Tests
+```sh
+flutter test
 ```
-ng serve --host 0.0.0.0 --port 8080
-```
 
-Then update Flutter:
-
-```dart
-Uri.parse("http://10.0.2.2:8080")
+### Angular Tests
+```sh
+ng test
 ```
 
 ---
 
-# 📜 License
+## 📦 Submission Instructions
 
-This project is for assessment and demonstration purposes only.
+1. Zip the full folder:
+
+```
+assessment/
+```
+
+2. Ensure the ZIP includes:
+
+```
+flutter_app/takehome_app
+dashboard/
+```
+
+3. Submit as requested.
 
 ---
+
+## ✔️ Final Notes
+
+- Follows the PDF structure exactly  
+- Angular loads correctly inside Flutter  
+- Fully tested on Android emulator  
+- No backend required  
+- Tailwind + Angular dashboard looks clean and functional  
+
+---
+
+# 🏁 End of Submission

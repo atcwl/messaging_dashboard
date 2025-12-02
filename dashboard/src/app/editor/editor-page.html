@@ -1,2 +1,18 @@
 <h1 class="text-2xl font-bold mb-4">Knowledgebase Editor</h1>
-<textarea class="w-full h-64 p-3 border rounded"></textarea>
+
+<div class="grid grid-cols-2 gap-4">
+
+  <!-- INPUT -->
+  <textarea
+    class="w-full h-80 p-3 border rounded"
+    [ngModel]="text()"
+    (ngModelChange)="text.set($event)">
+  </textarea>
+
+  <!-- PREVIEW -->
+  <div
+    class="p-3 border rounded bg-white prose max-w-none"
+    [innerHTML]="markdown()">
+  </div>
+
+</div>
